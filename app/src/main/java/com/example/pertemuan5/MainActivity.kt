@@ -74,7 +74,7 @@ fun TampilLayout(
             Text(
                 text = " Create Your Account",
                 fontSize = 30.sp,
-
+                fontWeight = FontWeight.Bold
             )
             TampilForm()
         }
