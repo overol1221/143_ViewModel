@@ -33,6 +33,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -70,6 +71,11 @@ fun TampilLayout(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.padding(20.dp)
         ){
+            Text(
+                text = " Create Your Account",
+                fontSize = 30.sp,
+
+            )
             TampilForm()
         }
     }
@@ -92,7 +98,7 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel ()) {
         singleLine = true,
         shape = MaterialTheme.shapes.large,
         modifier = Modifier.fillMaxWidth(),
-        label = { Text(text = "Nama Lengkap") },
+        label = { Text(text = "Username") },
         onValueChange = {
             textNama = it
         }
@@ -112,13 +118,22 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel ()) {
         singleLine = true,
         shape = MaterialTheme.shapes.large,
         modifier = Modifier.fillMaxWidth(),
-        label = { Text(text = "Alamat") },
+        label = { Text(text = "Email") },
         onValueChange = {
             textAlamat = it
         })
     SelectJK(
         options = jenis.map { id -> context.resources.getString(id) },
         onSelectionChanged = { cobaViewModel.setJenisK(it)})
+    OutlinedTextField(
+        value = textAlamat,
+        singleLine = true,
+        shape = MaterialTheme.shapes.large,
+        modifier = Modifier.fillMaxWidth(),
+        label = { Text(text = "Alamat") },
+        onValueChange = {
+            textAlamat = it
+        })
     Button(
         modifier = Modifier.fillMaxWidth(),
         onClick = { cobaViewModel.insertData(textNama, textTlp, textAlamat, dataForm.sex)
@@ -129,15 +144,7 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel ()) {
             fontSize = 16.sp
         )
     }
-    OutlinedTextField(
-        value = textAlamat,
-        singleLine = true,
-        shape = MaterialTheme.shapes.large,
-        modifier = Modifier.fillMaxWidth(),
-        label = { Text(text = "Alamat") },
-        onValueChange = {
-            textAlamat = it
-        })
+
     Spacer(modifier = Modifier.height(100.dp))
     TextHasil(
         namanya = cobaViewModel.namaUsr,
@@ -214,3 +221,4 @@ fun TextHasil(namanya: String, telponnya: String, alamatnya: String, jenisnya: S
             TampilLayout()
         }
     }
+
