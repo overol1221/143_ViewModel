@@ -167,13 +167,14 @@ fun SelectJK(
 ){
     var selectedValue by rememberSaveable { mutableStateOf( "") }
 
-    Column(modifier =Modifier.padding(16.dp)) {
+    Column(modifier =Modifier.fillMaxWidth()) {
         options.forEach { item ->
             Row (modifier = Modifier.selectable(
                 selected = selectedValue == item,
                 onClick = {
                     selectedValue = item
                     onSelectionChanged(item)
+
                 }
             ),
                 verticalAlignment = Alignment.CenterVertically
@@ -184,6 +185,25 @@ fun SelectJK(
                     }
                 )
                 Text(item)
+            }
+        }
+    }
+    Text(
+        text = "Status",
+        textAlign = TextAlign.Left,
+        modifier = Modifier.fillMaxWidth())
+    Column(modifier =Modifier.fillMaxWidth()) {
+        options.forEach { item ->
+            Row (modifier = Modifier.selectable(
+                selected = selectedValue == item,
+                onClick = {
+                    selectedValue = item
+                    onSelectionChanged(item)
+
+                }
+            ),
+                verticalAlignment = Alignment.CenterVertically
+            ){
                 RadioButton(selected = selectedValue == item,
                     onClick = {selectedValue = item
                         onSelectionChanged(item)
@@ -234,4 +254,5 @@ fun TextHasil(namanya: String, telponnya: String, alamatnya: String, jenisnya: S
             TampilLayout()
         }
     }
+
 
