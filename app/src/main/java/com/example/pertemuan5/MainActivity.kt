@@ -122,6 +122,10 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel ()) {
         onValueChange = {
             textAlamat = it
         })
+    Text(
+        text = "Jenis Kelamin",
+
+        )
     SelectJK(
         options = jenis.map { id -> context.resources.getString(id) },
         onSelectionChanged = { cobaViewModel.setJenisK(it)})
@@ -171,6 +175,12 @@ fun SelectJK(
             ),
                 verticalAlignment = Alignment.CenterVertically
             ){
+                RadioButton(selected = selectedValue == item,
+                    onClick = {selectedValue = item
+                        onSelectionChanged(item)
+                    }
+                )
+                Text(item)
                 RadioButton(selected = selectedValue == item,
                     onClick = {selectedValue = item
                         onSelectionChanged(item)
