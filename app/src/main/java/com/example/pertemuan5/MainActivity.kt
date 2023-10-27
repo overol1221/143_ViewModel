@@ -129,6 +129,15 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel ()) {
             fontSize = 16.sp
         )
     }
+    OutlinedTextField(
+        value = textAlamat,
+        singleLine = true,
+        shape = MaterialTheme.shapes.large,
+        modifier = Modifier.fillMaxWidth(),
+        label = { Text(text = "Alamat") },
+        onValueChange = {
+            textAlamat = it
+        })
     Spacer(modifier = Modifier.height(100.dp))
     TextHasil(
         namanya = cobaViewModel.namaUsr,
